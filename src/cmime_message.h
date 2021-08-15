@@ -48,10 +48,14 @@ extern "C" {
 #include <assert.h>
 #include <ctype.h>
 #include <time.h>
+#ifdef HAVE_SYS_MMAN_H
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif /* HAVE_UNISTD_H */
 #include <sys/mman.h>
+#endif /* HAVE_SYS_MMAN_H */
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <unistd.h>
 #include <fcntl.h>
 #include <sys/param.h>
 #include <errno.h>

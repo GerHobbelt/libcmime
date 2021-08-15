@@ -40,7 +40,9 @@ extern "C" {
 #include <assert.h>
 #include <errno.h>
 #include <time.h>
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif /* HAVE_UNISTD_H */
 
 /*!
  * @struct CMimeInfo_T cmime_util.h
