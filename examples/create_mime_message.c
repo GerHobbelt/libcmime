@@ -18,9 +18,15 @@ void usage() {
 }
 
 
-int main(int argc, char *argv[]) {
 
-    // addresses can either be specified "just as an address" or like "John Doe <from@example.org>"
+
+#if defined(BUILD_MONOLITHIC)
+#define main(cnt, arr)      mime_demo_create_message_main(cnt, arr)
+#endif
+
+int main(int argc, const char** argv)
+{
+	// addresses can either be specified "just as an address" or like "John Doe <from@example.org>"
     char from[] = "from@example.org";
     char to[] = "to@example.org";
     char *file = NULL;

@@ -16,8 +16,15 @@ void usage() {
     printf("optional parameter: -o /path/to/out_file\n");
 }
 
-int main(int argc, char *argv[]) {
-    int option;
+
+
+#if defined(BUILD_MONOLITHIC)
+#define main(cnt, arr)      mime_demo_attachment_to_file_main(cnt, arr)
+#endif
+
+int main(int argc, const char** argv)
+{
+	int option;
     int retval = 0;
     char *in_file = NULL;
     char *out_file = NULL;

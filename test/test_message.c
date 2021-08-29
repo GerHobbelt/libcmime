@@ -51,8 +51,15 @@ char test_files[54][10] = {
     "m3001.txt","m3002.txt","m3003.txt","m3004.txt"
 };
 
-int main (int argc, char const *argv[]) {
-    CMimeMessage_T *msg = cmime_message_new();
+
+
+#if defined(BUILD_MONOLITHIC)
+#define main(cnt, arr)      mime_test_message_main(cnt, arr)
+#endif
+
+int main(int argc, const char** argv)
+{
+	CMimeMessage_T *msg = cmime_message_new();
     char *s = NULL;
     char *s2 = NULL;
     char *msg_string = NULL;

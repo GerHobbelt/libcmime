@@ -92,8 +92,15 @@ void validate_qp(char *file_src, char *file_tmp, char *file_res, int mode, int r
 }
 
 
-int main (int argc, char const *argv[]) {
-    /* validate encoding with iso input */
+
+
+#if defined(BUILD_MONOLITHIC)
+#define main(cnt, arr)      mime_test_qp_main(cnt, arr)
+#endif
+
+int main(int argc, const char** argv)
+{
+	/* validate encoding with iso input */
     char file1[] = "qp_iso_plain.txt";
     char file1_encoded[] = "qp_iso_encoded.txt";
     char file1_tmp[] = "qp_iso_plain_tmp.txt";

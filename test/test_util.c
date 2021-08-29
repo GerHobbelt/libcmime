@@ -34,7 +34,14 @@
 
 #define EXPECTED_MIMETYPE "message/rfc822; charset=iso-8859-1"
 
-int main (int argc, char const *argv[]) {
+
+
+#if defined(BUILD_MONOLITHIC)
+#define main(cnt, arr)      mime_test_util_main(cnt, arr)
+#endif
+
+int main(int argc, const char** argv)
+{
 	char *out = NULL;
   char *fname = NULL;
 

@@ -29,8 +29,15 @@
 
 #include "test_data.h"
 
-int main (int argc, char const *argv[]) {
-    CMimeHeader_T *h;
+
+
+#if defined(BUILD_MONOLITHIC)
+#define main(cnt, arr)      mime_test_header_main(cnt, arr)
+#endif
+
+int main(int argc, const char** argv)
+{
+	CMimeHeader_T *h;
     char *s = NULL;
     int count;
     

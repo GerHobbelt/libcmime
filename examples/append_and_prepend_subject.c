@@ -8,7 +8,7 @@
 #include "../src/cmime_message.h"
 
 
-void usage() {
+static void usage() {
     printf("\n");
     printf("libcmime - simple api demonstration\n");
     printf("-----------------------------------\n");
@@ -21,9 +21,15 @@ void usage() {
 }
 
 
-int main(int argc, char *argv[])
+
+
+#if defined(BUILD_MONOLITHIC)
+#define main(cnt, arr)      mime_demo_append_and_prepend_main(cnt, arr)
+#endif
+
+int main(int argc, const char** argv)
 {
-    // addresses can either be specified "just as an address" or like "John Doe <from@example.org>"
+	// addresses can either be specified "just as an address" or like "John Doe <from@example.org>"
     char from[] = "from@example.org";
     char to[] = "to@example.org";
     char subject[] = "this is a subject";

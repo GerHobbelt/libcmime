@@ -38,8 +38,15 @@ void list_destroy(void *data) {
     assert(data);
 }
 
-int main (int argc, char const *argv[]) {
-    CMimeList_T *l;
+
+
+#if defined(BUILD_MONOLITHIC)
+#define main(cnt, arr)      mime_test_list_main(cnt, arr)
+#endif
+
+int main(int argc, const char** argv)
+{
+	CMimeList_T *l;
     char *out;
     char *data;
     char *pop;

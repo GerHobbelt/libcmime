@@ -20,9 +20,15 @@ void usage() {
     printf("required parameter: -i /path/to/input_file\n");
 }
 
-int main(int argc, char *argv[])
+
+
+#if defined(BUILD_MONOLITHIC)
+#define main(cnt, arr)      mime_demo_parse_message_main(cnt, arr)
+#endif
+
+int main(int argc, const char** argv)
 {
-    int option;
+	int option;
     int retval = 0;
     char *in_file = NULL;
     int i=0;

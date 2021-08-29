@@ -35,8 +35,15 @@
 
 #include "test_data.h"
 
-int main (int argc, char const *argv[]) {
-    CMimePart_T *part = NULL;
+
+
+#if defined(BUILD_MONOLITHIC)
+#define main(cnt, arr)      mime_test_part_main(cnt, arr)
+#endif
+
+int main(int argc, const char** argv)
+{
+	CMimePart_T *part = NULL;
     char *s = NULL;
     char *out = NULL;
     char *out2 = NULL;

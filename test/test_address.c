@@ -30,8 +30,15 @@
 
 #include "test_data.h"
 
-int main (int argc, char const *argv[]) {
-    char *s = NULL;
+
+
+#if defined(BUILD_MONOLITHIC)
+#define main(cnt, arr)      mime_test_address_main(cnt, arr)
+#endif
+
+int main(int argc, const char** argv)
+{
+	char *s = NULL;
     CMimeAddress_T *ca = cmime_address_new();
     
     cmime_address_set_name(ca, addr_string1_name_part);

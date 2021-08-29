@@ -30,8 +30,15 @@
 
 #include "test_data.h"
 
-int main (int argc, char const *argv[]) {
-    CMimeStringList_T *sl;
+
+
+#if defined(BUILD_MONOLITHIC)
+#define main(cnt, arr)      mime_test_string_main(cnt, arr)
+#endif
+
+int main(int argc, const char** argv)
+{
+	CMimeStringList_T *sl;
     
     char *s = NULL;
     char *out = NULL;

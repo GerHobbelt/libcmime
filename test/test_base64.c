@@ -32,8 +32,15 @@
 
 #include "test_data.h"
 
-int main (int argc, char const *argv[]) {
-    char *s = NULL;
+
+
+#if defined(BUILD_MONOLITHIC)
+#define main(cnt, arr)      mime_test_base64_main(cnt, arr)
+#endif
+
+int main(int argc, const char** argv)
+{
+	char *s = NULL;
     char *s2 = NULL;
     FILE *fp = NULL;
     FILE *fp2 = NULL;
